@@ -94,9 +94,7 @@ class WorkoutsReader {
                                     "\n Calories spent: $workoutEnergy" +
                                     "\n Reported from: $workoutSource"
                         )
-                        if (durationInMinutes > 15 ||
-                            (workoutType != walkingActivityType && workoutType != runningActivityType) ) {
-                            // we don't want to log walks and runs that are less than 15 minutes
+                        
                             Log.i(logTag, "logged workout")
                             createWorkoutMap(
                                 type = workoutType,
@@ -107,10 +105,7 @@ class WorkoutsReader {
                                 energy = workoutEnergy,
                                 source = workoutSource,
                             ).also { workout -> outputList.add(workout) }
-                        }
-                        else {
-                            Log.i(logTag, "workout was not logged")
-                        }
+                       
                     }
                 }
 
@@ -184,10 +179,7 @@ class WorkoutsReader {
                                     "\n Calories spent: $workoutEnergy" +
                                     "\n Reported from: $workoutSource"
                         )
-                        if (session.getActiveTime(TimeUnit.MINUTES) > 15 ||
-                            (session.activity != FitnessActivities.WALKING
-                                    && session.activity != FitnessActivities.RUNNING)
-                        ) {
+                       
                             // we don't want to log walks and runs that are less than 15 minutes
                             Log.i(logTag, "logged workout")
                             createWorkoutMap(
@@ -199,9 +191,7 @@ class WorkoutsReader {
                                 energy = workoutEnergy,
                                 source = workoutSource,
                             ).also { workout -> outputList.add(workout) }
-                        } else {
-                            Log.i(logTag, "workout session was not logged")
-                        }
+                      
                     }
                 }
 
